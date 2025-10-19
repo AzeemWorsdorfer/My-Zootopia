@@ -12,25 +12,26 @@ animals_data = load_data("animals_data.json")
 
 animal_output_str = ""
 for animal in animals_data:
+    animal_output_str += "<li class='cards__item'>\n"
     name = animal.get("name")
     if name:
-        animal_output_str += f"Name: {name}\n"
+        animal_output_str += f"Name: {name}<br/>\n"
 
     characteristics = animal.get("characteristics")
     if characteristics:
 
         diet = characteristics.get("diet")
         if diet:
-            animal_output_str += f"Diet: {diet}\n"
+            animal_output_str += f"Diet: {diet}<br/>\n"
 
         animal_type = characteristics.get("type")
         if animal_type:
-            animal_output_str += f"Type: {animal_type}\n"
+            animal_output_str += f"Type: {animal_type}<br/>\n"
 
     locations = animal.get("locations")
     if locations and len(locations) > 0:
-        animal_output_str += f"Location: {locations[0]}\n"
-    animal_output_str += "\n"
+        animal_output_str += f"Location: {locations[0]}<br/>\n"
+    animal_output_str += "</li>\n"
 
 
 def read_template(file_path):
