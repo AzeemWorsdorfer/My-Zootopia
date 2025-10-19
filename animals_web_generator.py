@@ -10,27 +10,42 @@ def load_data(file_path):
 animals_data = load_data("animals_data.json")
 
 
-def get_animal_info():
-    for animal in animals_data:
-        name = animal.get("name")
-        if name:
-            print(f"Name: {name}")
+animal_output_str = ""
+for animal in animals_data:
+    name = animal.get("name")
+    if name:
+        animal_output_str += f"Name: {name}\n"
 
-        characteristics = animal.get("characteristics")
-        if characteristics:
+    characteristics = animal.get("characteristics")
+    if characteristics:
 
-            diet = characteristics.get("diet")
-            if diet:
-                print(f"Diet: {diet}")
+        diet = characteristics.get("diet")
+        if diet:
+            animal_output_str += f"Diet: {diet}\n"
 
-            animal_type = characteristics.get("type")
-            if animal_type:
-                print(f"Type: {animal_type}")
+        animal_type = characteristics.get("type")
+        if animal_type:
+            animal_output_str += f"Type: {animal_type}\n"
 
-        locations = animal.get("locations")
-        if locations and len(locations) > 0:
-            print(f"Location: {locations[0]}")
-        print()
+    locations = animal.get("locations")
+    if locations and len(locations) > 0:
+        animal_output_str += f"Location: {locations[0]}\n"
+    animal_output_str += "\n"
 
 
-get_animal_info()
+def read_template(file_path):
+    """Reads HTML template file"""
+    with open(file_path, "r") as handle:
+        return handle.read()
+
+
+template = read_template("animals_template.html")
+
+final_html_content = template.replace(
+    "__REPLACE_ANIMALS_INFO__", animal_output_str)
+
+try:
+    with open("animals.html", "w", encoding="utf-8") as file:
+        file.write(final_html_content)
+except IOError as e:
+    print(f"Error writing the file: {e}")
