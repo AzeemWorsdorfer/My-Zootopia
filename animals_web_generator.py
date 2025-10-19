@@ -14,23 +14,24 @@ animal_output_str = ""
 for animal in animals_data:
     animal_output_str += "<li class='cards__item'>\n"
     name = animal.get("name")
-    if name:
-        animal_output_str += f"Name: {name}<br/>\n"
+    animal_output_str += f"<div class='card__title'>{name}</div>\n"
 
+    animal_output_str += "<p class='card__text'>\n"
     characteristics = animal.get("characteristics")
     if characteristics:
 
         diet = characteristics.get("diet")
         if diet:
-            animal_output_str += f"Diet: {diet}<br/>\n"
+            animal_output_str += f"<strong>Diet:</strong> {diet}<br/>\n"
 
         animal_type = characteristics.get("type")
         if animal_type:
-            animal_output_str += f"Type: {animal_type}<br/>\n"
+            animal_output_str += f"<strong>Type:</strong> {animal_type}<br/>\n"
 
     locations = animal.get("locations")
     if locations and len(locations) > 0:
-        animal_output_str += f"Location: {locations[0]}<br/>\n"
+        animal_output_str += f"<strong>Location:</strong> {locations[0]}<br/>\n"
+    animal_output_str += "</p>\n"
     animal_output_str += "</li>\n"
 
 
