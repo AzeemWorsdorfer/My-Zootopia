@@ -29,26 +29,27 @@ def serialize_animal(animal):
     if name:
         output_html += f"<div class='card__title'>{name}</div>\n"
 
-    output_html += "<p class='card__text'>\n"
+    output_html += "<div class='card__text'>\n"
+    output_html += "<ul class='animal__characteristics'>\n"
 
     characteristics = animal.get("characteristics")
     if characteristics:
 
         diet = characteristics.get("diet")
         if diet:
-            output_html += f"<strong>Diet:</strong> {diet}<br/>\n"
+            output_html += f"<li><strong>Diet:</strong> {diet}</li>\n"
 
         animal_type = characteristics.get("type")
         if animal_type:
-            output_html += f"<strong>Type:</strong> {animal_type}<br/>\n"
+            output_html += f"<li><strong>Type:</strong> {animal_type}</li>\n"
 
     locations = animal.get("locations")
     if locations and len(locations) > 0:
-        output_html += f"<strong>Location:</strong> {locations[0]}<br/>\n"
+        output_html += f"<li><strong>Location:</strong> {locations[0]}</li>\n"
 
-    output_html += "</p>\n"
+    output_html += "</ul>\n"
+    output_html += "</div>\n"
     output_html += "</li>\n"
-
     return output_html
 
 # --------------------- MAIN EXECUTION ---------------------

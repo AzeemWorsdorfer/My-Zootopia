@@ -61,6 +61,29 @@
         line-height: 2;
         margin-bottom: 1.25rem;
       }
+
+      .animal-details {
+        list-style: none; /* Removes default bullets */
+        padding: 0;
+        margin: 0;
+      }
+
+      /* Targets the <li> elements inside the list */
+      .animal-details li {
+        margin-bottom: 0.5rem;
+        padding: 0.25rem 0;
+        border-bottom: 1px dotted @gray-lighter;
+        line-height: 1.4;
+      }
+
+      /* Targets the <strong> tags for the labels */
+      .animal-details li strong {
+        color: @gray-dark;
+        font-weight: 600;
+        min-width: 90px;
+        display: inline-block; /* Helps align the labels across all lines */
+      }
+      /* --- END NEW STYLES --- */
     </style>
   </head>
   <body>
